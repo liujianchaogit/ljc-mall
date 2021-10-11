@@ -13,6 +13,7 @@
         <module>ljc-common</module>
         <module>ljc-gatewany</module>
         <module>ljc-product</module>
+        <module>ljc-resource-server</module>
         <module>ljc-search</module>
     </modules>
 
