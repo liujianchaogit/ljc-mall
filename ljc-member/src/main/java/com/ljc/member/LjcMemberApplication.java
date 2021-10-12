@@ -1,13 +1,13 @@
-package com.ljc.resource.server;
+package com.ljc.member;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LjcResourceServerApplication {
+public class LjcMemberApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LjcResourceServerApplication.class, args);
+        SpringApplication.run(LjcMemberApplication.class, args);
     }
 
 }

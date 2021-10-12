@@ -15,7 +15,7 @@ spring:
           uri: lb://ljc-auth
           predicates:
             - Path=/ljc-auth/**
-        - id: ljc-r
-          uri: lb://ljc-resource-server
+        - id: ljc-member
+          uri: lb://ljc-member
           predicates:
-            - Path=/ljc-resource-server/**
+            - Path=/ljc-member/**

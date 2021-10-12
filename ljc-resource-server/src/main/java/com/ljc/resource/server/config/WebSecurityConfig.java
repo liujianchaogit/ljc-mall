@@ -16,6 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/member/member/loadByUsername").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .oauth2ResourceServer()
