@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface MemberFeign {
 
     @GetMapping("/member/member/loadByUsername")
-    R<UserDto> loadUserByUsername(@RequestParam("username")String username);
+    R<UserDto> loadUserByUsername(@RequestParam("username") String username);
 
 }

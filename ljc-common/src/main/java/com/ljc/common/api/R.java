@@ -45,11 +45,12 @@ public class R<T> implements Serializable {
 
     private static <T> R<T> restResult(T data, long errorCode, String errorMessage, long total) {
         R<T> apiResult = new R<>();
-        apiResult.setSuccess(ApiErrorCode.SUCCESS.getCode() == errorCode);
-        apiResult.setData(data);
-        apiResult.setErrorCode(errorCode);
-        apiResult.setErrorMessage(errorMessage);
-        apiResult.setTotal(total);
+        apiResult
+                .setSuccess(ApiErrorCode.SUCCESS.getCode() == errorCode)
+                .setData(data)
+                .setErrorCode(errorCode)
+                .setErrorMessage(errorMessage)
+                .setTotal(total);
         return apiResult;
     }
 

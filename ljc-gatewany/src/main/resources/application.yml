@@ -19,3 +19,7 @@ spring:
           uri: lb://ljc-member
           predicates:
             - Path=/ljc-member/**
+        - id: ljc-product
+          uri: lb://ljc-product
+          predicates:
+            - Path=/ljc-product/**
