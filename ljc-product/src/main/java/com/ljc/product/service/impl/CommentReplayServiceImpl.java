@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- * 商品评价回复关系 服务实现类
+ * 产品评价回复表 服务实现类
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-09
+ * @since 2021-10-13
  */
 @Service
 public class CommentReplayServiceImpl extends ServiceImpl<CommentReplayMapper, CommentReplay> implements ICommentReplayService {

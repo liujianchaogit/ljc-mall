@@ -7,60 +7,68 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 品牌
+ * 品牌表
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-09
+ * @since 2021-10-13
  */
 @TableName("pms_brand")
 public class Brand implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 品牌id
-     */
-      @TableId(value = "brand_id", type = IdType.AUTO)
-    private Long brandId;
+      @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
-    /**
-     * 品牌名
-     */
     private String name;
 
     /**
-     * 品牌logo地址
+     * 首字母
+     */
+    private String firstLetter;
+
+    private Integer sort;
+
+    /**
+     * 是否为品牌制造商：0->不是；1->是
+     */
+    private Integer factoryStatus;
+
+    private Integer showStatus;
+
+    /**
+     * 产品数量
+     */
+    private Integer productCount;
+
+    /**
+     * 产品评论数量
+     */
+    private Integer productCommentCount;
+
+    /**
+     * 品牌logo
      */
     private String logo;
 
     /**
-     * 介绍
+     * 专区大图
      */
-    private String descript;
+    private String bigPic;
 
     /**
-     * 显示状态[0-不显示；1-显示]
+     * 品牌故事
      */
-    private Integer showStatus;
-
-    /**
-     * 检索首字母
-     */
-    private String firstLetter;
-
-    /**
-     * 排序
-     */
-    private Integer sort;
+    private String brandStory;
 
 
-    public Long getBrandId() {
-        return brandId;
+    public Long getId() {
+        return id;
     }
 
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -69,30 +77,6 @@ public class Brand implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public String getDescript() {
-        return descript;
-    }
-
-    public void setDescript(String descript) {
-        this.descript = descript;
-    }
-
-    public Integer getShowStatus() {
-        return showStatus;
-    }
-
-    public void setShowStatus(Integer showStatus) {
-        this.showStatus = showStatus;
     }
 
     public String getFirstLetter() {
@@ -111,16 +95,76 @@ public class Brand implements Serializable {
         this.sort = sort;
     }
 
+    public Integer getFactoryStatus() {
+        return factoryStatus;
+    }
+
+    public void setFactoryStatus(Integer factoryStatus) {
+        this.factoryStatus = factoryStatus;
+    }
+
+    public Integer getShowStatus() {
+        return showStatus;
+    }
+
+    public void setShowStatus(Integer showStatus) {
+        this.showStatus = showStatus;
+    }
+
+    public Integer getProductCount() {
+        return productCount;
+    }
+
+    public void setProductCount(Integer productCount) {
+        this.productCount = productCount;
+    }
+
+    public Integer getProductCommentCount() {
+        return productCommentCount;
+    }
+
+    public void setProductCommentCount(Integer productCommentCount) {
+        this.productCommentCount = productCommentCount;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public String getBigPic() {
+        return bigPic;
+    }
+
+    public void setBigPic(String bigPic) {
+        this.bigPic = bigPic;
+    }
+
+    public String getBrandStory() {
+        return brandStory;
+    }
+
+    public void setBrandStory(String brandStory) {
+        this.brandStory = brandStory;
+    }
+
     @Override
     public String toString() {
         return "Brand{" +
-        "brandId=" + brandId +
+        "id=" + id +
         ", name=" + name +
-        ", logo=" + logo +
-        ", descript=" + descript +
-        ", showStatus=" + showStatus +
         ", firstLetter=" + firstLetter +
         ", sort=" + sort +
+        ", factoryStatus=" + factoryStatus +
+        ", showStatus=" + showStatus +
+        ", productCount=" + productCount +
+        ", productCommentCount=" + productCommentCount +
+        ", logo=" + logo +
+        ", bigPic=" + bigPic +
+        ", brandStory=" + brandStory +
         "}";
     }
 }
