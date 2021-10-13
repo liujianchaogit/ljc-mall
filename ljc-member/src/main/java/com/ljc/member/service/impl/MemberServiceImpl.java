@@ -24,6 +24,8 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     @Override
     public UserDto loadUserByUsername(String username) {
         Member member = getOne(Wrappers.<Member>lambdaQuery().eq(Member::getUsername, username));
+        if (member == null)
+            return null;
         UserDto userDto = new UserDto();
         userDto.setId(member.getId());
         userDto.setUsername(member.getUsername());
