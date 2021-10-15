@@ -1,6 +1,7 @@
 package com.ljc.common.advice;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.ljc.common.annotation.NoR;
 import com.ljc.common.api.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
@@ -25,7 +26,7 @@ public class LjcAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        return true;
+        return !returnType.hasMethodAnnotation(NoR.class);
     }
 
     @Override

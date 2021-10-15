@@ -1,4 +1,4 @@
-package com.ljc.auth.config;
+package com.ljc.auth.server.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;

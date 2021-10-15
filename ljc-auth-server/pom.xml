@@ -9,7 +9,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>ljc-auth</artifactId>
+    <artifactId>ljc-auth-server</artifactId>
 
     <dependencies>
         <dependency>

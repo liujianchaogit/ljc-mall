@@ -11,15 +11,31 @@ spring:
             allowedOrigins: "*"
             allowedMethods: "*"
       routes:
-        - id: ljc-auth
-          uri: lb://ljc-auth
+        - id: ljc-auth-server
+          uri: lb://ljc-auth-server
           predicates:
-            - Path=/ljc-auth/**
+            - Path=/ljc-auth-server/**
+        - id: ljc-cart
+          uri: lb://ljc-cart
+          predicates:
+            - Path=/ljc-cart/**
         - id: ljc-member
           uri: lb://ljc-member
           predicates:
             - Path=/ljc-member/**
+        - id: ljc-order
+          uri: lb://ljc-order
+          predicates:
+            - Path=/ljc-order/**
         - id: ljc-product
           uri: lb://ljc-product
           predicates:
             - Path=/ljc-product/**
+        - id: ljc-search
+          uri: lb://ljc-search
+          predicates:
+            - Path=/ljc-search/**
+        - id: ljc-third-party
+          uri: lb://ljc-third-party
+          predicates:
+            - Path=/ljc-third-party/**

@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2ResourceServer()
                 .opaqueToken()
-                .introspector(new LjcOpaqueTokenIntrospector("http://ljc-auth/oauth/check_token", restTemplate()));
+                .introspector(new LjcOpaqueTokenIntrospector("http://ljc-auth-server/oauth/check_token", restTemplate()));
 
     }
 

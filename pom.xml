@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>ljc-auth</module>
+        <module>ljc-auth-server</module>
         <module>ljc-cart</module>
         <module>ljc-common</module>
         <module>ljc-gatewany</module>

@@ -1,6 +1,6 @@
-package com.ljc.auth.config;
+package com.ljc.auth.server.config;
 
-import com.ljc.auth.security.User;
+import com.ljc.auth.server.security.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

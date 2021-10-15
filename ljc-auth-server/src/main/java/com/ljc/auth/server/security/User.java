@@ -1,4 +1,4 @@
-package com.ljc.auth.security;
+package com.ljc.auth.server.security;
 
 import com.ljc.common.dto.UserDto;
 import lombok.Data;
