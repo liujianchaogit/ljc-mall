@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 @RestControllerAdvice(annotations = RestController.class)
 @Slf4j
-public class LjcAdvice implements ResponseBodyAdvice<Object> {
+public class Advice implements ResponseBodyAdvice<Object> {
 
     @ExceptionHandler
     public R<String> exceptionHandler(Exception e) {

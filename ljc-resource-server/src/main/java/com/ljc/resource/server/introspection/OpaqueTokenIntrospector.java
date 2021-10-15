@@ -7,9 +7,9 @@ import org.springframework.security.oauth2.server.resource.introspection.NimbusO
 import org.springframework.security.oauth2.server.resource.introspection.OAuth2IntrospectionAuthenticatedPrincipal;
 import org.springframework.web.client.RestOperations;
 
-public class LjcOpaqueTokenIntrospector extends NimbusOpaqueTokenIntrospector {
+public class OpaqueTokenIntrospector extends NimbusOpaqueTokenIntrospector {
 
-    public LjcOpaqueTokenIntrospector(String introspectionUri, RestOperations restOperations) {
+    public OpaqueTokenIntrospector(String introspectionUri, RestOperations restOperations) {
         super(introspectionUri, restOperations);
     }
 

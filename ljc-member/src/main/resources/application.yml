@@ -6,3 +6,9 @@ spring:
     password: root
   redis:
     host: 10.225.68.34
+
+ljc:
+  security:
+    ignore:
+      urls:
+        - /member/login

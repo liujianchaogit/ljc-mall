@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.ljc.resource.server.config.SecurityProperties,\
 com.ljc.resource.server.config.WebSecurityConfig

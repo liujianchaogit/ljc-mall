@@ -1,6 +1,6 @@
 package com.ljc.common;
 
-import com.ljc.common.advice.LjcAdvice;
+import com.ljc.common.advice.Advice;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 public class LjcAutoConfiguration {
 
     @Bean
-    public LjcAdvice ljcAdvice() {
-        return new LjcAdvice();
+    public Advice advice() {
+        return new Advice();
     }
 
 }
