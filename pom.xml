@@ -10,12 +10,15 @@
 
     <modules>
         <module>ljc-auth</module>
+        <module>ljc-cart</module>
         <module>ljc-common</module>
         <module>ljc-gatewany</module>
         <module>ljc-member</module>
+        <module>ljc-order</module>
         <module>ljc-product</module>
         <module>ljc-resource-server</module>
         <module>ljc-search</module>
+        <module>ljc-third-party</module>
     </modules>
 
     <properties>
