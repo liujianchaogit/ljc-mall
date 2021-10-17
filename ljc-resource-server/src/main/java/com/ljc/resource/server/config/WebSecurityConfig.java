@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
@@ -22,9 +23,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    public void configure(WebSecurity web) {
+        securityProperties.getIgnoreUrls().forEach(ignoreUrl -> web.ignoring().antMatchers(ignoreUrl));
+    }
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http.authorizeRequests();
-        securityProperties.getUrls().forEach(url -> registry.antMatchers(url).permitAll());
+        securityProperties.getAnonymousUrls().forEach(anonymousUrl -> registry.antMatchers(anonymousUrl).permitAll());
         registry.anyRequest().authenticated()
                 .and()
                 .oauth2ResourceServer()

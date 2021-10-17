@@ -26,4 +26,9 @@ public class SecurityUtil {
         return getUser() == null ? null : getUser().getClientId();
     }
 
+    public static Integer getIntegration() {
+        return getUser() == null ? null : getUser().getAttribute("integration");
+    }
+
+
 }

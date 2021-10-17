@@ -6,3 +6,4 @@ spring:
     password: root
   redis:
     host: 10.225.68.34
+    connect-timeout:

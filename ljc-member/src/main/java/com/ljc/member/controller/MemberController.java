@@ -1,7 +1,6 @@
 package com.ljc.member.controller;
 
-import com.ljc.common.annotation.NoR;
-import com.ljc.common.dto.UserDto;
+import com.ljc.common.dto.auth.User;
 import com.ljc.member.service.IMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +16,7 @@ public class MemberController {
     private IMemberService memberService;
 
     @GetMapping("/login")
-    @NoR
-    public UserDto login(@RequestParam String username) {
+    public User login(@RequestParam String username) {
         return memberService.loadUserByUsername(username);
     }
 

@@ -1,0 +1,15 @@
+server:
+  port: 9922
+
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      discovery:
+        server-addr: @nacos.discovery.serverAddr@
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+  profiles:
+    active: @profiles.active@

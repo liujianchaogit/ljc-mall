@@ -7,33 +7,37 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 会员收货地址表
+ * 会员收货地址
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-12
+ * @since 2021-10-16
  */
 @TableName("ums_member_receive_address")
 public class MemberReceiveAddress implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * id
+     */
       @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    /**
+     * member_id
+     */
     private Long memberId;
 
     /**
-     * 收货人名称
+     * 收货人姓名
      */
     private String name;
 
-    private String phoneNumber;
-
     /**
-     * 是否为默认
+     * 电话
      */
-    private Integer defaultStatus;
+    private String phone;
 
     /**
      * 邮政编码
@@ -60,6 +64,16 @@ public class MemberReceiveAddress implements Serializable {
      */
     private String detailAddress;
 
+    /**
+     * 省市区代码
+     */
+    private String areacode;
+
+    /**
+     * 是否默认
+     */
+    private Integer defaultStatus;
+
 
     public Long getId() {
         return id;
@@ -85,20 +99,12 @@ public class MemberReceiveAddress implements Serializable {
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Integer getDefaultStatus() {
-        return defaultStatus;
-    }
-
-    public void setDefaultStatus(Integer defaultStatus) {
-        this.defaultStatus = defaultStatus;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPostCode() {
@@ -141,19 +147,36 @@ public class MemberReceiveAddress implements Serializable {
         this.detailAddress = detailAddress;
     }
 
+    public String getAreacode() {
+        return areacode;
+    }
+
+    public void setAreacode(String areacode) {
+        this.areacode = areacode;
+    }
+
+    public Integer getDefaultStatus() {
+        return defaultStatus;
+    }
+
+    public void setDefaultStatus(Integer defaultStatus) {
+        this.defaultStatus = defaultStatus;
+    }
+
     @Override
     public String toString() {
         return "MemberReceiveAddress{" +
         "id=" + id +
         ", memberId=" + memberId +
         ", name=" + name +
-        ", phoneNumber=" + phoneNumber +
-        ", defaultStatus=" + defaultStatus +
+        ", phone=" + phone +
         ", postCode=" + postCode +
         ", province=" + province +
         ", city=" + city +
         ", region=" + region +
         ", detailAddress=" + detailAddress +
+        ", areacode=" + areacode +
+        ", defaultStatus=" + defaultStatus +
         "}";
     }
 }

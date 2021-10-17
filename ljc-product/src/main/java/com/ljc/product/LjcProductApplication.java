@@ -9,7 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableCaching
 @EnableFeignClients
-@SpringBootApplication(exclude = {WebSecurityConfig.class, SecurityAutoConfiguration.class})
+@SpringBootApplication
 public class LjcProductApplication {
 
     public static void main(String[] args) {

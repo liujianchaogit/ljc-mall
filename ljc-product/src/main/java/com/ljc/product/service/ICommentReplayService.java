@@ -5,11 +5,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- * 产品评价回复表 服务类
+ * 商品评价回复关系 服务类
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-13
+ * @since 2021-10-09
  */
 public interface ICommentReplayService extends IService<CommentReplay> {
 

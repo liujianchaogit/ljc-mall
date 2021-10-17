@@ -4,38 +4,35 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * <p>
- * 产品评价回复表
+ * 商品评价回复关系
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-13
+ * @since 2021-10-09
  */
 @TableName("pms_comment_replay")
 public class CommentReplay implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * id
+     */
       @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    /**
+     * 评论id
+     */
     private Long commentId;
 
-    private String memberNickName;
-
-    private String memberIcon;
-
-    private String content;
-
-    private LocalDateTime createTime;
-
     /**
-     * 评论人员类型；0->会员；1->管理员
+     * 回复id
      */
-    private Integer type;
+    private Long replyId;
 
 
     public Long getId() {
@@ -54,44 +51,12 @@ public class CommentReplay implements Serializable {
         this.commentId = commentId;
     }
 
-    public String getMemberNickName() {
-        return memberNickName;
+    public Long getReplyId() {
+        return replyId;
     }
 
-    public void setMemberNickName(String memberNickName) {
-        this.memberNickName = memberNickName;
-    }
-
-    public String getMemberIcon() {
-        return memberIcon;
-    }
-
-    public void setMemberIcon(String memberIcon) {
-        this.memberIcon = memberIcon;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
+    public void setReplyId(Long replyId) {
+        this.replyId = replyId;
     }
 
     @Override
@@ -99,11 +64,7 @@ public class CommentReplay implements Serializable {
         return "CommentReplay{" +
         "id=" + id +
         ", commentId=" + commentId +
-        ", memberNickName=" + memberNickName +
-        ", memberIcon=" + memberIcon +
-        ", content=" + content +
-        ", createTime=" + createTime +
-        ", type=" + type +
+        ", replyId=" + replyId +
         "}";
     }
 }

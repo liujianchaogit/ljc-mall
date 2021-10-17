@@ -12,30 +12,43 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-12
+ * @since 2021-10-16
  */
 @TableName("ums_member_login_log")
 public class MemberLoginLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * id
+     */
       @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    /**
+     * member_id
+     */
     private Long memberId;
 
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
 
+    /**
+     * ip
+     */
     private String ip;
 
+    /**
+     * city
+     */
     private String city;
 
     /**
-     * 登录类型：0->PC；1->android;2->ios;3->小程序
+     * 登录类型[1-web，2-app]
      */
-    private Integer loginType;
-
-    private String province;
+    private Boolean loginType;
 
 
     public Long getId() {
@@ -78,20 +91,12 @@ public class MemberLoginLog implements Serializable {
         this.city = city;
     }
 
-    public Integer getLoginType() {
+    public Boolean getLoginType() {
         return loginType;
     }
 
-    public void setLoginType(Integer loginType) {
+    public void setLoginType(Boolean loginType) {
         this.loginType = loginType;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
     }
 
     @Override
@@ -103,7 +108,6 @@ public class MemberLoginLog implements Serializable {
         ", ip=" + ip +
         ", city=" + city +
         ", loginType=" + loginType +
-        ", province=" + province +
         "}";
     }
 }

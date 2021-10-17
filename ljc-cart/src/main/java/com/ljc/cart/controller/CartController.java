@@ -1,10 +1,13 @@
 package com.ljc.cart.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.ljc.cart.po.Cart;
 import com.ljc.cart.service.ICartService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.ljc.common.annotation.NoR;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RequestMapping("/cart")
 @RestController
@@ -16,9 +19,20 @@ public class CartController {
         this.cartService = cartService;
     }
 
-    @GetMapping("/add")
-    public boolean add(@RequestParam("skuId") Long skuId, @RequestParam("num") Integer num) {
+    @PostMapping("/add")
+    public boolean add(@RequestParam Long skuId, @RequestParam Integer num) throws InterruptedException, ExecutionException, JsonProcessingException {
         return cartService.add(skuId, num);
+    }
+
+    @GetMapping("/list")
+    public List<Cart> list() {
+        return cartService.list();
+    }
+
+    @GetMapping("/listCart")
+    @NoR
+    public List<Cart> listCart() {
+        return cartService.list();
     }
 
 }

@@ -7,11 +7,11 @@ import org.springframework.stereotype.Controller;
 
 /**
  * <p>
- * 产品评价回复表 前端控制器
+ * 商品评价回复关系 前端控制器
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-13
+ * @since 2021-10-09
  */
 @Controller
 @RequestMapping("/product/commentReplay")

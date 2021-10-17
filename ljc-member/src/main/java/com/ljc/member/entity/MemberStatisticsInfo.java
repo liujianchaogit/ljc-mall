@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -13,22 +12,33 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-12
+ * @since 2021-10-16
  */
 @TableName("ums_member_statistics_info")
 public class MemberStatisticsInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * id
+     */
       @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    /**
+     * 会员id
+     */
     private Long memberId;
 
     /**
      * 累计消费金额
      */
     private BigDecimal consumeAmount;
+
+    /**
+     * 累计优惠金额
+     */
+    private BigDecimal couponAmount;
 
     /**
      * 订单数量
@@ -65,20 +75,25 @@ public class MemberStatisticsInfo implements Serializable {
      */
     private Integer fansCount;
 
+    /**
+     * 收藏的商品数量
+     */
     private Integer collectProductCount;
 
+    /**
+     * 收藏的专题活动数量
+     */
     private Integer collectSubjectCount;
 
-    private Integer collectTopicCount;
-
+    /**
+     * 收藏的评论数量
+     */
     private Integer collectCommentCount;
 
-    private Integer inviteFriendCount;
-
     /**
-     * 最后一次下订单时间
+     * 邀请的朋友数量
      */
-    private LocalDateTime recentOrderTime;
+    private Integer inviteFriendCount;
 
 
     public Long getId() {
@@ -103,6 +118,14 @@ public class MemberStatisticsInfo implements Serializable {
 
     public void setConsumeAmount(BigDecimal consumeAmount) {
         this.consumeAmount = consumeAmount;
+    }
+
+    public BigDecimal getCouponAmount() {
+        return couponAmount;
+    }
+
+    public void setCouponAmount(BigDecimal couponAmount) {
+        this.couponAmount = couponAmount;
     }
 
     public Integer getOrderCount() {
@@ -177,14 +200,6 @@ public class MemberStatisticsInfo implements Serializable {
         this.collectSubjectCount = collectSubjectCount;
     }
 
-    public Integer getCollectTopicCount() {
-        return collectTopicCount;
-    }
-
-    public void setCollectTopicCount(Integer collectTopicCount) {
-        this.collectTopicCount = collectTopicCount;
-    }
-
     public Integer getCollectCommentCount() {
         return collectCommentCount;
     }
@@ -201,20 +216,13 @@ public class MemberStatisticsInfo implements Serializable {
         this.inviteFriendCount = inviteFriendCount;
     }
 
-    public LocalDateTime getRecentOrderTime() {
-        return recentOrderTime;
-    }
-
-    public void setRecentOrderTime(LocalDateTime recentOrderTime) {
-        this.recentOrderTime = recentOrderTime;
-    }
-
     @Override
     public String toString() {
         return "MemberStatisticsInfo{" +
         "id=" + id +
         ", memberId=" + memberId +
         ", consumeAmount=" + consumeAmount +
+        ", couponAmount=" + couponAmount +
         ", orderCount=" + orderCount +
         ", couponCount=" + couponCount +
         ", commentCount=" + commentCount +
@@ -224,10 +232,8 @@ public class MemberStatisticsInfo implements Serializable {
         ", fansCount=" + fansCount +
         ", collectProductCount=" + collectProductCount +
         ", collectSubjectCount=" + collectSubjectCount +
-        ", collectTopicCount=" + collectTopicCount +
         ", collectCommentCount=" + collectCommentCount +
         ", inviteFriendCount=" + inviteFriendCount +
-        ", recentOrderTime=" + recentOrderTime +
         "}";
     }
 }

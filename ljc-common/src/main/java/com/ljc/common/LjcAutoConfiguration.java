@@ -2,10 +2,13 @@ package com.ljc.common;
 
 import com.ljc.common.advice.Advice;
 import com.ljc.common.config.ThreadPoolConfigProperties;
+import com.ljc.common.interceptor.AuthorizationRequestInterceptor;
+import feign.RequestInterceptor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.*;
 
 @Configuration
@@ -15,6 +18,11 @@ public class LjcAutoConfiguration {
     @Bean
     public Advice advice() {
         return new Advice();
+    }
+
+    @Bean
+    public RequestInterceptor interceptor(HttpServletRequest request) {
+        return new AuthorizationRequestInterceptor(request);
     }
 
     @Bean

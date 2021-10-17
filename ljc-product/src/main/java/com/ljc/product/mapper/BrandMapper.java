@@ -5,11 +5,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
- * 品牌表 Mapper 接口
+ * 品牌 Mapper 接口
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-13
+ * @since 2021-10-09
  */
 public interface BrandMapper extends BaseMapper<Brand> {
 

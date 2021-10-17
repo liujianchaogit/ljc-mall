@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.225.68.34:3306/mall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://10.225.68.34:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
   redis:
@@ -10,6 +10,13 @@ spring:
     type: redis
     redis:
       time-to-live: 60m
+
+ljc:
+  security:
+    ignore-urls:
+      - /product/category/listTree
+      - /product/attr/info/{id}
+      - /product/skuInfo/detail
 
 logging:
   level:

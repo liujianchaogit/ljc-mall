@@ -1,14 +1,11 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.225.68.34:3306/mall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://10.225.68.34:3306/gulimall_ums?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
-  redis:
-    host: 10.225.68.34
 
 ljc:
   security:
-    ignore:
-      urls:
-        - /member/login
+    ignore-urls:
+      - /member/login

@@ -19,6 +19,7 @@
         <module>ljc-resource-server</module>
         <module>ljc-search</module>
         <module>ljc-third-party</module>
+        <module>ljc-ware</module>
     </modules>
 
     <properties>

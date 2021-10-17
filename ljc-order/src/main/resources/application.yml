@@ -1,1 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.225.68.34:3306/gulimall_oms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  redis:
+    host: 10.225.68.34
 
+logging:
+  level:
+    com.ljc.order.mapper: debug

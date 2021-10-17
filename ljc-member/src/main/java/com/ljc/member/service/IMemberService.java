@@ -1,6 +1,6 @@
 package com.ljc.member.service;
 
-import com.ljc.common.dto.UserDto;
+import com.ljc.common.dto.auth.User;
 import com.ljc.member.entity.Member;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -14,5 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IMemberService extends IService<Member> {
 
-    UserDto loadUserByUsername(String username);
+    User loadUserByUsername(String username);
 }

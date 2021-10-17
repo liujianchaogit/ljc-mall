@@ -1,6 +1,6 @@
 package com.ljc.auth.server.config;
 
-import com.ljc.auth.server.security.User;
+import com.ljc.auth.server.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -13,9 +13,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Configuration
 @EnableAuthorizationServer
@@ -51,9 +48,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         endpoints
                 .tokenStore(new RedisTokenStore(connectionFactory))
                 .tokenEnhancer((accessToken, authentication) -> {
-                    Map<String, Object> additionalInformation = new HashMap<>();
-                    additionalInformation.put("user_id", ((User) authentication.getPrincipal()).getUserId());
-                    ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInformation);
+                    ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(((UserDetailsImpl) authentication.getPrincipal()).getUser().getAdditionalInformation());
                     return accessToken;
                 })
                 .authenticationManager(authenticationManager);

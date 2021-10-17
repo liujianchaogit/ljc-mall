@@ -2,8 +2,9 @@ package com.ljc.auth.server.service.impl;
 
 import com.ljc.auth.server.feign.AdminFeign;
 import com.ljc.auth.server.feign.MemberFeign;
-import com.ljc.auth.server.security.User;
-import com.ljc.common.dto.UserDto;
+import com.ljc.auth.server.security.UserDetailsImpl;
+import com.ljc.common.api.R;
+import com.ljc.common.dto.auth.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,14 +21,16 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDto userDto;
+        R<User> r;
         if ("admin".equals(SecurityContextHolder.getContext().getAuthentication().getName()))
-            userDto = adminFeign.login(username);
+            r = adminFeign.login(username);
         else
-            userDto = memberFeign.login(username);
-        if (userDto == null)
+            r = memberFeign.login(username);
+        if (!r.isSuccess())
+            throw new RuntimeException(r.getErrorMessage());
+        if (r.getData() == null)
             throw new UsernameNotFoundException("用户名不存在");
-        return new User(userDto);
+        return new UserDetailsImpl(r.getData());
     }
 
 }

@@ -8,26 +8,35 @@ import java.math.BigDecimal;
 
 /**
  * <p>
- * 会员等级表
+ * 会员等级
  * </p>
  *
  * @author liujianchao
- * @since 2021-10-12
+ * @since 2021-10-16
  */
 @TableName("ums_member_level")
 public class MemberLevel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * id
+     */
       @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    /**
+     * 等级名称
+     */
     private String name;
 
+    /**
+     * 等级需要的成长值
+     */
     private Integer growthPoint;
 
     /**
-     * 是否为默认等级：0->不是；1->是
+     * 是否为默认等级[0->不是；1->是]
      */
     private Integer defaultStatus;
 
@@ -47,21 +56,6 @@ public class MemberLevel implements Serializable {
     private Integer priviledgeFreeFreight;
 
     /**
-     * 是否有签到特权
-     */
-    private Integer priviledgeSignIn;
-
-    /**
-     * 是否有评论获奖励特权
-     */
-    private Integer priviledgeComment;
-
-    /**
-     * 是否有专享活动特权
-     */
-    private Integer priviledgePromotion;
-
-    /**
      * 是否有会员价格特权
      */
     private Integer priviledgeMemberPrice;
@@ -71,6 +65,9 @@ public class MemberLevel implements Serializable {
      */
     private Integer priviledgeBirthday;
 
+    /**
+     * 备注
+     */
     private String note;
 
 
@@ -130,30 +127,6 @@ public class MemberLevel implements Serializable {
         this.priviledgeFreeFreight = priviledgeFreeFreight;
     }
 
-    public Integer getPriviledgeSignIn() {
-        return priviledgeSignIn;
-    }
-
-    public void setPriviledgeSignIn(Integer priviledgeSignIn) {
-        this.priviledgeSignIn = priviledgeSignIn;
-    }
-
-    public Integer getPriviledgeComment() {
-        return priviledgeComment;
-    }
-
-    public void setPriviledgeComment(Integer priviledgeComment) {
-        this.priviledgeComment = priviledgeComment;
-    }
-
-    public Integer getPriviledgePromotion() {
-        return priviledgePromotion;
-    }
-
-    public void setPriviledgePromotion(Integer priviledgePromotion) {
-        this.priviledgePromotion = priviledgePromotion;
-    }
-
     public Integer getPriviledgeMemberPrice() {
         return priviledgeMemberPrice;
     }
@@ -188,9 +161,6 @@ public class MemberLevel implements Serializable {
         ", freeFreightPoint=" + freeFreightPoint +
         ", commentGrowthPoint=" + commentGrowthPoint +
         ", priviledgeFreeFreight=" + priviledgeFreeFreight +
-        ", priviledgeSignIn=" + priviledgeSignIn +
-        ", priviledgeComment=" + priviledgeComment +
-        ", priviledgePromotion=" + priviledgePromotion +
         ", priviledgeMemberPrice=" + priviledgeMemberPrice +
         ", priviledgeBirthday=" + priviledgeBirthday +
         ", note=" + note +
