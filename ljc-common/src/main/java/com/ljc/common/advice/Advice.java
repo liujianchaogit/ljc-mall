@@ -21,6 +21,7 @@ public class Advice implements ResponseBodyAdvice<Object> {
     @ExceptionHandler
     public R<String> exceptionHandler(Exception e) {
         log.error(e.getMessage());
+        e.printStackTrace();
         return R.failed(e.getMessage());
     }
 

@@ -10,5 +10,10 @@ public interface ICartService {
 
     boolean add(Long skuId, Integer num) throws ExecutionException, InterruptedException, JsonProcessingException;
 
+    boolean delete(int[] skuIds);
+
+    boolean update(String skuId, int checked);
+
     List<Cart> list();
+
 }

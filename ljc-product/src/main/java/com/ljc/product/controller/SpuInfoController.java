@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Controller;
  * @author liujianchao
  * @since 2021-10-09
  */
-@Controller
+@RestController
 @RequestMapping("/product/spuInfo")
 public class SpuInfoController {
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient("ljc-member")
 public interface MemberFeign {
 
-    @GetMapping("/member/memberreceiveaddress/info/{id}")
+    @GetMapping("/member/memberReceiveAddress/info/{id}")
     R<MemberAddressVo> info(@PathVariable("id") Long addrId);
 
 }

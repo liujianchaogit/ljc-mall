@@ -2,7 +2,6 @@ package com.ljc.cart.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.ljc.cart.fegin.ProductFeign;
 import com.ljc.cart.po.Cart;
 import com.ljc.cart.po.SkuInfo;
@@ -17,6 +16,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -34,7 +34,7 @@ public class CartServiceImpl implements ICartService {
     private ExecutorService executorService;
 
     @Override
-    public boolean add(Long skuId, Integer num) throws ExecutionException, InterruptedException, JsonProcessingException {
+    public boolean add(Long skuId, Integer num) throws ExecutionException, InterruptedException {
         BoundHashOperations<String, Object, Object> cartOps = getCartOps();
 
         //判断Redis是否有该商品的信息
@@ -79,6 +79,29 @@ public class CartServiceImpl implements ICartService {
             String cartItemJson = JSON.toJSONString(cartItemVo);
             cartOps.put(skuId.toString(), cartItemJson);
         }
+        return true;
+    }
+
+    @Override
+    public boolean delete(int[] skuId) {
+        BoundHashOperations<String, Object, Object> cartOps = getCartOps();
+        Long r = cartOps.delete(Arrays.stream(skuId).mapToObj(String::valueOf));
+        return r != null && r > 0;
+    }
+
+    @Override
+    public boolean update(String skuId, int checked) {
+        BoundHashOperations<String, Object, Object> cartOps = getCartOps();
+
+        String redisValue = (String) cartOps.get(skuId);
+
+        Cart cart = JSON.parseObject(redisValue, Cart.class);
+
+        //修改商品状态
+        if (cart == null)
+            throw new RuntimeException("该商品已被删除");
+        cart.setCheck(checked == 1);
+        cartOps.put(skuId,JSON.toJSONString(cart));
         return true;
     }
 

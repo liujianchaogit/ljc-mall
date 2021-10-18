@@ -23,7 +23,7 @@ public class OrderConfirmVo {
     /**
      * 优惠券（会员积分）
      **/
-    private Integer integration;
+    private Long integration;
 
     /**
      * 防止重复提交的令牌

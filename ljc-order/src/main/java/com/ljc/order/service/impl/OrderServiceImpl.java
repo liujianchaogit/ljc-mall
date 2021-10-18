@@ -73,7 +73,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         CompletableFuture<Void> cartInfoFuture = CompletableFuture.runAsync(() -> {
             RequestContextHolder.setRequestAttributes(attributes);
             //2、远程查询购物车所有选中的购物项
-            List<OrderItemVo> currentCartItems = cartFeign.list();
+            List<OrderItemVo> currentCartItems = cartFeign.list().getData();
             confirmVo.setItems(currentCartItems);
             //feign在远程调用之前要构造请求，调用很多的拦截器
         }, executorService).thenRunAsync(() -> {
@@ -95,7 +95,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         }, executorService);
 
         //3、查询用户积分
-        Integer integration = SecurityUtil.getIntegration();
+        Long integration = SecurityUtil.getIntegration();
         confirmVo.setIntegration(integration);
 
         //4、价格数据自动计算
@@ -240,7 +240,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         List<OrderItem> orderItemEntityList = new ArrayList<>();
 
         //最后确定每个购物项的价格
-        List<OrderItemVo> currentCartItems = cartFeign.list();
+        List<OrderItemVo> currentCartItems = cartFeign.list().getData();
         if (currentCartItems != null && currentCartItems.size() > 0) {
             orderItemEntityList = currentCartItems.stream().map((items) -> {
                 //构建订单项数据

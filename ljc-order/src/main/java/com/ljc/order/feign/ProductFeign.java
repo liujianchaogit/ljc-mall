@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient("ljc-product")
 public interface ProductFeign {
 
-    @GetMapping("/product/spuinfo/skuId/{skuId}")
+    @GetMapping("/product/spuInfo/skuId/{skuId}")
     R<SpuInfoVo> getSpuInfoBySkuId(@PathVariable("skuId") Long skuId);
 }

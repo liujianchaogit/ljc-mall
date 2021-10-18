@@ -2,6 +2,7 @@ package com.ljc.ware.mapper;
 
 import com.ljc.ware.entity.WareSku;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface WareSkuMapper extends BaseMapper<WareSku> {
     Long getSkuStock(long skuId);
 
     List<Long> listWareIdHasSkuStock(Long skuId);
+
+    Long lockSkuStock(@Param("skuId") Long skuId, @Param("wareId") Long wareId, @Param("num") Integer num);
 }

@@ -27,8 +27,14 @@ public class MemberReceiveAddressController {
     private IMemberReceiveAddressService memberReceiveAddressService;
 
     @GetMapping("/{memberId}")
-    public List<MemberReceiveAddress> get(@PathVariable("memberId") Long memberId) {
+    public List<MemberReceiveAddress> list(@PathVariable("memberId") Long memberId) {
         return memberReceiveAddressService.get(memberId);
+    }
+
+    @RequestMapping("/info/{id}")
+    //@RequiresPermissions("member:memberreceiveaddress:info")
+    public MemberReceiveAddress info(@PathVariable("id") Long id){
+        return memberReceiveAddressService.getById(id);
     }
 
 }

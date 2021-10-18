@@ -3,6 +3,8 @@ package com.ljc.ware.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Builder;
+
 import java.io.Serializable;
 
 /**
@@ -13,6 +15,7 @@ import java.io.Serializable;
  * @author liujianchao
  * @since 2021-10-17
  */
+@Builder
 @TableName("wms_ware_order_task_detail")
 public class WareOrderTaskDetail implements Serializable {
 
