@@ -23,8 +23,8 @@ public class SkuInfoController {
         return skuInfoService.getById(id);
     }
 
-    @GetMapping("/detail")
-    public SkuItemVo get(@RequestParam Long skuId) throws ExecutionException, InterruptedException {
+    @GetMapping("/detail/{skuId}")
+    public SkuItemVo get(@PathVariable("skuId") Long skuId) throws ExecutionException, InterruptedException {
         return skuInfoService.detail(skuId);
     }
 

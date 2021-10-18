@@ -15,8 +15,8 @@ ljc:
   security:
     ignore-urls:
       - /product/category/listTree
-      - /product/attr/info/{id}
-      - /product/skuInfo/detail
+#      - /product/attr/info/{id}
+      - /product/skuInfo/detail/*
 
 logging:
   level:

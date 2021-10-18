@@ -184,8 +184,8 @@ public class ElasticSearchServiceImpl implements IElasticSearchService {
         result.setTotal(total);
 
         //5、2分页信息-总页码-计算
-        int totalPages = (int) total % 16 == 0 ?
-                (int) total / 16 : ((int) total / 16 + 1);
+        int totalPages = (int) total % 10 == 0 ?
+                (int) total / 10 : ((int) total / 10 + 1);
         result.setTotalPages(totalPages);
 
         List<Integer> pageNavs = new ArrayList<>();
@@ -318,8 +318,8 @@ public class ElasticSearchServiceImpl implements IElasticSearchService {
         }
 
         //分页
-        searchSourceBuilder.from((param.getPageNum() - 1) * 16);
-        searchSourceBuilder.size(16);
+        searchSourceBuilder.from((param.getPageNum() - 1) * 10);
+        searchSourceBuilder.size(10);
 
         //高亮
         if (!StringUtils.isEmpty(param.getKeyword())) {
