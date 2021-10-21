@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.ljc.order.entity.Order;
 import com.ljc.order.vo.OrderConfirmVo;
 import com.ljc.order.vo.OrderSubmitVo;
+import com.ljc.order.vo.PayVo;
 
 import java.util.concurrent.ExecutionException;
 
@@ -20,4 +21,6 @@ public interface IOrderService extends IService<Order> {
     OrderConfirmVo confirm() throws ExecutionException, InterruptedException;
 
     Order submit(OrderSubmitVo orderSubmitVo);
+
+    PayVo getOrderPay(String orderSn);
 }

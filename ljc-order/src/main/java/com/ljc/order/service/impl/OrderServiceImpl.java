@@ -1,6 +1,8 @@
 package com.ljc.order.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ljc.common.api.R;
 import com.ljc.common.dto.ware.FareVo;
@@ -178,8 +180,29 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
             }
 
         } else {
-            throw new RuntimeException("金额有误");
+            throw new RuntimeException("金额有误"+payAmount + " "+payPrice);
         }
+    }
+
+    @Override
+    public PayVo getOrderPay(String orderSn) {
+        PayVo payVo = new PayVo();
+        Order orderInfo = getOne(Wrappers.<Order>lambdaQuery().eq(Order::getOrderSn, orderSn));
+
+        //保留两位小数点，向上取值
+        BigDecimal payAmount = orderInfo.getPayAmount().setScale(2, BigDecimal.ROUND_UP);
+        payVo.setTotal_amount(payAmount.toString());
+        payVo.setOut_trade_no(orderInfo.getOrderSn());
+
+        //查询订单项的数据
+        List<OrderItem> orderItemInfo = orderItemService.list(
+                new QueryWrapper<OrderItem>().eq("order_sn", orderSn));
+        OrderItem orderItemEntity = orderItemInfo.get(0);
+        payVo.setBody(orderItemEntity.getSkuAttrsVals());
+
+        payVo.setSubject(orderItemEntity.getSkuName());
+
+        return payVo;
     }
 
     private OrderCreateTo createOrder(OrderSubmitVo vo) {
